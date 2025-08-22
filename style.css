@@ -73,7 +73,6 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-/* NEW: Styling for Labels */
 label {
     display: block;
     font-weight: bold;
@@ -93,7 +92,6 @@ select {
     font-family: var(--font-family);
 }
 
-/* NEW: Focus state for inputs */
 input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
@@ -115,16 +113,6 @@ textarea {
     font-size: 0.9rem;
 }
 
-.sub-group {
-    margin-top: 1.5rem;
-    padding-left: 1rem;
-    border-left: 3px solid var(--border-color);
-}
-
-.sub-group h4 {
-    margin-bottom: 0.5rem;
-}
-
 /* --- Navigation & Buttons --- */
 .navigation-buttons {
     display: flex;
@@ -143,7 +131,6 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* NEW: Hover and Focus states for buttons */
 button:hover {
     background-color: #a00000; /* Darker red */
     cursor: pointer;
@@ -173,11 +160,6 @@ button#prevBtn:hover {
 
 #summary-content {
     font-size: 0.9rem;
-}
-
-#summary-content h4 {
-    margin-top: 1rem;
-    color: var(--primary-color);
 }
 
 /* --- Footer --- */
