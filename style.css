@@ -1,1 +1,207 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #c00000;
+    --secondary-color: #f4f4f4;
+    --text-color: #333;
+    --light-text-color: #fff;
+    --border-color: #ddd;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --container-width: 800px;
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    background-color: #fff;
+    color: var(--text-color);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--text-color);
+    color: var(--light-text-color);
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid var(--primary-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* --- Main Content & Form Styling --- */
+main {
+    max-width: var(--container-width);
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+#snapshot-form section {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+#snapshot-form section.active {
+    display: block;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* NEW: Styling for Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+}
+
+/* NEW: Focus state for inputs */
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(192, 0, 0, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.note {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.sub-group {
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--border-color);
+}
+
+.sub-group h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Navigation & Buttons --- */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* NEW: Hover and Focus states for buttons */
+button:hover {
+    background-color: #a00000; /* Darker red */
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 2px solid #a00000;
+    outline-offset: 2px;
+}
+
+button#prevBtn {
+    background-color: #666;
+}
+
+button#prevBtn:hover {
+    background-color: #444;
+}
+
+/* --- Summary Aside --- */
+#summary {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+#summary-content {
+    font-size: 0.9rem;
+}
+
+#summary-content h4 {
+    margin-top: 1rem;
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: var(--text-color);
+    color: var(--light-text-color);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+}
