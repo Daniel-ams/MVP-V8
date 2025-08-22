@@ -1,1 +1,30 @@
-
+[
+    {
+        "id": "basic-info",
+        "title": "Section 1: Basic Information",
+        "note": "Start with the basics. This helps identify the organization and its context.",
+        "fields": [
+            { "id": "orgName", "label": "Organization Name", "type": "text", "placeholder": "Example: HealthyCare Clinic" },
+            { "id": "yearFounded", "label": "Year Founded", "type": "number", "placeholder": "Example: 2015" },
+            { "id": "primaryCity", "label": "Primary City", "type": "text", "placeholder": "Example: Raleigh" },
+            { "id": "primaryCountry", "label": "Primary Country", "type": "text", "placeholder": "Example: United States" }
+        ]
+    },
+    {
+        "id": "org-identity",
+        "title": "Section 2: Organization Identity",
+        "note": "Define the core of your organization. Your answers here set the context for the entire analysis.",
+        "fields": [
+            { "id": "orgArchetype", "label": "Primary Organizational Archetype", "type": "select", "options": ["For-Profit Business", "Mission-Driven Organization", "Member/Community-Based Organization", "Investor/Financial Firm", "Hybrid Organization", "Uncertain"] }
+        ]
+    },
+    {
+        "id": "core-strategy",
+        "title": "Section 3: Core Strategy",
+        "note": "Define your organization's strategic direction. This is the compass that guides your decisions.",
+        "fields": [
+            { "id": "missionStatement", "label": "Mission Statement", "type": "textarea", "placeholder": "Your 'Why'. What is your organization's core purpose?" },
+            { "id": "visionStatement", "label": "Vision Statement", "type": "textarea", "placeholder": "Your 'Where'. What is the future you aim to create?" }
+        ]
+    }
+]
