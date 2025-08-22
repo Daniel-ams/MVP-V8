@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- STATE MANAGEMENT ---
     let currentSectionIndex = 0;
     let sectionsData = []; // This will hold our form schema
-    const formData = {}; // This will store user input
 
     // --- DOM ELEMENTS ---
     const formContainer = document.getElementById('snapshot-form');
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         input.id = fieldData.id;
-        input.name = fieldData.id; // Important for form data collection
+        input.name = fieldData.id;
         if (fieldData.placeholder) {
             input.placeholder = fieldData.placeholder;
         }
@@ -132,36 +131,45 @@ document.addEventListener('DOMContentLoaded', () => {
      * Updates the summary panel with the current form data.
      */
     function updateSummary() {
-        // This function can be enhanced later to collect and display data
-        summaryContent.innerHTML = '<h4>Summary Updated!</h4><p>Displaying collected data here is the next step.</p>';
+        // This function can be enhanced later
+        summaryContent.innerHTML = '<p>Summary will be updated here...</p>';
     }
 
     // --- DATA HANDLING ---
 
     /**
-     * Gathers all data from the form and saves it as a JSON file.
+     * Gathers all data from the form and sends it to our Netlify function.
      */
-    function saveProfile() {
+    async function saveProfile() {
         const form = document.getElementById('snapshot-form');
         const allFormData = new FormData(form);
         const profileData = {};
 
-        // Convert FormData to a simple object
         for (const [key, value] of allFormData.entries()) {
             profileData[key] = value;
         }
-        
-        // Create a downloadable file
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(profileData, null, 2));
-        const downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "convoking4_snapshot.json");
-        document.body.appendChild(downloadAnchorNode); // required for firefox
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
 
-        console.log("Profile Saved:", profileData);
-        alert('Your profile has been downloaded!');
+        console.log("Sending data to backend:", profileData);
+
+        try {
+            const response = await fetch('/.netlify/functions/save-snapshot', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(profileData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log("Success:", result);
+            alert('Your profile has been successfully sent to the server!');
+
+        } catch (error) {
+            console.error("Error saving profile:", error);
+            alert('There was an error saving your profile. Please try again.');
+        }
     }
 
 
@@ -171,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSectionIndex < sectionsData.length - 1) {
             currentSectionIndex++;
             showSection(currentSectionIndex);
-            updateSummary(); // Update summary as user progresses
         }
     });
 
@@ -183,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveBtn.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
         saveProfile();
     });
 
